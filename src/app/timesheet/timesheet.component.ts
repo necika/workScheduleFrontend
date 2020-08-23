@@ -11,5 +11,11 @@ export class TimesheetComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  private convertDateStringToTime(value:string){
+    let returnValue = "";
+    let strArray = value.split("T");
+    let timeArray = strArray[1].split(":");
+    returnValue = timeArray[0] + ":" + timeArray[1];
+    return returnValue;
+  }
 }

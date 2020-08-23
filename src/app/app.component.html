@@ -302,12 +302,19 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
+  <span style="font-size:30px;cursor:pointer; margin-left: 30px;" (click)="openSideMenuBar()">&#9776; open</span>
   
-  <a [routerLink]="['/timesheet']"> Timesheets </a>
-  <a [routerLink]="['/users/add']"> Add Users </a>
-  
-    
+   
 </div>
+<div id="mySidenav" *ngIf="showSideMenuValue" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeSideMenuBar()">&times;</a>
+  <a [routerLink]="['/timesheet']">Timesheets</a>
+  <a [routerLink]="['/users/add']">Add Users</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
