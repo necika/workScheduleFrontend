@@ -308,10 +308,10 @@
 </div>
 <div id="mySidenav" *ngIf="showSideMenuValue" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeSideMenuBar()">&times;</a>
-  <a [routerLink]="['/timesheet']">Timesheets</a>
-  <a [routerLink]="['/users/add']">Add Users</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a *ngIf="someoneLoggedIn" [routerLink]="['/timesheet']">Timesheets</a>
+  <a *ngIf="someoneLoggedIn" [routerLink]="['/users/add']">Add Users</a>
+  <a *ngIf="someoneLoggedIn" href="#">Clients</a>
+  <a *ngIf="someoneLoggedIn" href="#">Contact</a>
 </div>
 
 

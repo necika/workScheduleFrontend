@@ -19,4 +19,12 @@ export class AppComponent {
   public closeSideMenuBar() {
     this.showSideMenuValue = false;
   }
+  get someoneLoggedIn(){
+    if (localStorage.getItem('jwt') === null){
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
 }
