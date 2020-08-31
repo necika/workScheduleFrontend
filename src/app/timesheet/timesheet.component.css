@@ -1,5 +1,8 @@
-table{
+#container{
     margin-top: 100px;
+}
+table {
+    margin-top: 50px;
 }
 td {
     border : 1px solid #ddd;
@@ -8,20 +11,23 @@ th {
     font-size : 20px;
 }
 .col1{
-    width: 50px;
+    width: 5%;
 }
 .col2{
-    width: 500px;
+    width: 30%;
 }
 .col3{
-    width: 500px;
+    width: 35%;
 }
-.col4{
-    width: 100px;
-}
-.col5{
-    width: 100px;
+.timeTab {
+    width: 10%;
 }
 th{
     text-align: center;
+}
+small{
+    color:#fcb103;
+}
+.mandatoryMessage {
+    color:red;
 }

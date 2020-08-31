@@ -1,35 +1,41 @@
-<br><br><br>
-<table class="table">
+<div id="container">
+  <label for="start">Choose a month: </label>
+  <input type="month" (change)="choosingMonthChangeListener($event)" min="2018-03"  [(ngModel)]="this.currentMonth">
+  <table id="timesheetTable" class="table">
     <thead class="thead-dark">
       <tr>
         <th class="col1" scope="col">Day</th>
         <th class="col2" scope="col">Task</th>
         <th class="col3" scope="col">Description</th>
-        <th class="col4" scope="col">Start time</th>
-        <th class="col5" scope="col">End time</th>
+        <th class="timeTab" scope="col">Start time</th>
+        <th class="timeTab" scope="col">End time</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="col1" scope="row">1.</td>
-        <td class="col2">Task1</td>
-        <td class="col3">Description1</td>
-        <td class="col4">10:00</td>
-        <td class="col5">10:00</td>
+      <tr *ngFor="let tsEntry of timesheetEntries; let i=index">
+        <td><label *ngIf="tsEntry.position === 0">{{tsEntry.day+"."}}</label></td>
+        <td>
+          <input type="text" class="form-control" (keydown)="tsEntry.changed = true" [(ngModel)]="tsEntry.task" />
+          <small class="mandatoryMessage" *ngIf="tsEntry.task == ''">Task field is mandatory!</small>
+        </td>
+        <td><textarea class="form-control" (keydown)="tsEntry.changed = true" [(ngModel)]="tsEntry.description" type="text" >{{tsEntry.description}}</textarea></td>
+        <td>
+          <input type="time" class="form-control" (change)="tsEntry.changed = true" [(ngModel)]="tsEntry.startTime"/>
+          <small class="mandatoryMessage" *ngIf="tsEntry.startTime == ''">Start time field is mandatory!</small><br>
+        </td>
+        <td>
+          <input type="time" (change)="tsEntry.changed = true" class="form-control" [(ngModel)]="tsEntry.endTime"/>
+          <small class="mandatoryMessage" *ngIf="tsEntry.endTime == ''">End time field is mandatory!</small><br>
+          <small *ngIf="getMinutes(tsEntry.startTime) >  getMinutes(tsEntry.endTime)">Start time is after end time!</small><br>
+        </td>
+        <td>
+          <button *ngIf="tsEntry.changed" (click)="saveTimesheetEntry(tsEntry)" class="btn btn-success">Save</button>
+          <button class="btn btn-danger">Remove</button>
+          <button class="btn btn-primary" *ngIf="timesheetEntries[i+1] === undefined || timesheetEntries[i+1].position === 0">Add</button>
+        </td>
       </tr>
-      <tr>
-        <td class="col1" scope="row">2.</td>
-        <td class="col2">Task2</td>
-        <td class="col3">Description2</td>
-        <td class="col4">10:00</td>
-        <td class="col5">10:00</td>
-      </tr>
-      <tr>
-        <td class="col1" scope="row">3.</td>
-        <td class="col2">Task3</td>
-        <td class="col3">Description3</td>
-        <td class="col4">10:00</td>
-        <td class="col5">10:00</td>
-      </tr>
+     
     </tbody>
   </table>
+</div>
