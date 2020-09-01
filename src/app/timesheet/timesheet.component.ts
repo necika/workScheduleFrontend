@@ -21,12 +21,23 @@ export class TimesheetComponent implements OnInit {
     this.timesheetService.getAllByMonth(this.currentMonth).subscribe(response => this.timesheetEntries = response);
   }
 
+  public addTimesheetEntryForSameDay(tsEntry: any,index: number){
+    let position = tsEntry.position;
+    position++;
+    let newTsEntry = new TimesheetEntryDTO(tsEntry.day,"","","","",position,true,tsEntry.userId,tsEntry.tsMonthId);
+    console.log(newTsEntry)
+    let array = [...this.timesheetEntries];
+    array.splice(index+1,0,newTsEntry);
+    this.timesheetEntries = new Set(array);
+  }
+
   public choosingMonthChangeListener(event: any){
     this.timesheetService.getAllByMonth(event.target.value).subscribe(response => this.timesheetEntries = response);
   }
   public saveTimesheetEntry(tsEntry: TimesheetEntryDTO){
      let isValid = document.getElementsByTagName("small").length == 0;
      if(isValid){
+       console.log(tsEntry);
         this.timesheetService.saveTimesheet(tsEntry).subscribe(response => tsEntry.changed = false);
      }
   }
