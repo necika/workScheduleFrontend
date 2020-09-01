@@ -32,7 +32,7 @@
         <td>
           <button *ngIf="tsEntry.changed" (click)="saveTimesheetEntry(tsEntry)" class="btn btn-success">Save</button>
           <button class="btn btn-danger">Remove</button>
-          <button class="btn btn-primary" *ngIf="timesheetEntries[i+1] === undefined || timesheetEntries[i+1].position === 0">Add</button>
+          <button class="btn btn-primary" (click)="addTimesheetEntryForSameDay(tsEntry,i)" *ngIf="timesheetEntries[i+1] === undefined || timesheetEntries[i+1].position === 0">Add</button>
         </td>
       </tr>
      
