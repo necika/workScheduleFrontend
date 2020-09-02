@@ -31,3 +31,6 @@ small{
 .mandatoryMessage {
     color:red;
 }
+#addNewDayTsBtn {
+    margin-top:3%;
+}

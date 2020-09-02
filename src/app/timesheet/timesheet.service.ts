@@ -9,12 +9,16 @@ export class TimesheetService {
   private readonly editTimesheetUrl: string;
   private readonly getAllByMonthUrl : string;
   private readonly saveTimesheetEntry : string;
+  private readonly getMonthIdUrl : string;
+  private readonly getUserIdUrl : string;
 
   constructor(private http: HttpClient) {
     this.removeTimesheetUrl = 'http://localhost:8080/timetimesheetEntrysheet/delete';
     this.editTimesheetUrl = 'http://localhost:8080/timesheetEntry/edit';
     this.getAllByMonthUrl = 'http://localhost:8080/timesheetEntry/byMonth';
-    this.saveTimesheetEntry = 'http://localhost:8080/timesheetEntry'
+    this.getMonthIdUrl = 'http://localhost:8080/timesheetMonth/getId';
+    this.saveTimesheetEntry = 'http://localhost:8080/timesheetEntry';
+    this.getUserIdUrl = 'http://localhost:8080/users/getId';
   }
 
   public saveTimesheet(entry: TimesheetEntryDTO): Observable<any> {
@@ -28,5 +32,11 @@ export class TimesheetService {
   }
   public getAllByMonth(value: string){
     return this.http.get<any>(this.getAllByMonthUrl + '/' + value);
+  }
+  public getMonthId(value: string){
+    return this.http.get<any>(this.getMonthIdUrl + '/' + value);
+  }
+  public getUserId(value: string){
+    return this.http.get<any>(this.getUserIdUrl + '/' + value);
   }
 }
