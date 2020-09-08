@@ -10,7 +10,7 @@
       <!-- Login Form -->
       <form (ngSubmit)="onSubmit()">
         <input id="email" type="text" class="fadeIn second"  [(ngModel)]="logemail" [ngModelOptions]="{standalone:true}" placeholder="Email">
-        <input id = "password" type="text" id="password" class="fadeIn third"  [(ngModel)]="logpassword" [ngModelOptions]="{standalone:true}" placeholder="Password">
+        <input id = "password" type="password" id="password" class="fadeIn second"  [(ngModel)]="logpassword" [ngModelOptions]="{standalone:true}" placeholder="Password">
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
   
