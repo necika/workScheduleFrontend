@@ -13,7 +13,7 @@ export class TimesheetService {
   private readonly getUserIdUrl : string;
 
   constructor(private http: HttpClient) {
-    this.removeTimesheetUrl = 'http://localhost:8080/timetimesheetEntrysheet/delete';
+    this.removeTimesheetUrl = 'http://localhost:8080/timesheetEntry/delete';
     this.editTimesheetUrl = 'http://localhost:8080/timesheetEntry/edit';
     this.getAllByMonthUrl = 'http://localhost:8080/timesheetEntry/byMonth';
     this.getMonthIdUrl = 'http://localhost:8080/timesheetMonth/getId';
@@ -25,7 +25,7 @@ export class TimesheetService {
     return this.http.post<any>(this.saveTimesheetEntry, entry);
   }
   public removeTimesheet(id: number){
-     return this.http.delete<any>(this.removeTimesheetUrl + '/' + id, null);
+     return this.http.get<any>(this.removeTimesheetUrl + '/' + id);
   }
   public editTimesheet(id: number){
       return this.http.put<any>(this.editTimesheetUrl + '/' + id , null);

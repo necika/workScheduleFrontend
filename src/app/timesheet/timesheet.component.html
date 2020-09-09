@@ -14,7 +14,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let tsEntry of timesheetEntries; let i=index">
-        <td><label *ngIf="tsEntry.position === 0">{{tsEntry.day+"."}}</label></td>
+        <td><label *ngIf="dayDisplaying(timesheetEntries,i)">{{tsEntry.day+"."}}</label></td>
         <td>
           <input type="text" class="form-control" (keydown)="tsEntry.changed = true" [(ngModel)]="tsEntry.task" />
           <small class="mandatoryMessage" *ngIf="tsEntry.task == ''">Task field is mandatory!</small>
@@ -31,8 +31,8 @@
         </td>
         <td>
           <button *ngIf="tsEntry.changed" (click)="saveTimesheetEntry(tsEntry)" class="btn btn-success">Save</button>
-          <button class="btn btn-danger">Remove</button>
-          <button class="btn btn-primary" (click)="addTimesheetEntryForSameDay(tsEntry,i)" *ngIf="timesheetEntries[i+1] === undefined || timesheetEntries[i+1].position === 0">Add</button>
+          <button class="btn btn-danger" (click)="removeTimesheetEntry(tsEntry,i)">Remove</button>
+          <button class="btn btn-primary" (click)="addTimesheetEntryForSameDay(tsEntry,i)" *ngIf="timesheetEntries[i+1] === undefined || timesheetEntries[i+1].day != timesheetEntries[i].day">Add</button>
         </td>
       </tr>
      
