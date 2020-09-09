@@ -310,6 +310,7 @@
   <a href="javascript:void(0)" class="closebtn" (click)="closeSideMenuBar()">&times;</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/timesheet']">Timesheets</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/users/add']">Add Users</a>
+  <a *ngIf="someoneLoggedIn" [routerLink]="['/morningMeeting']">Morning meeting</a>
   <a *ngIf="someoneLoggedIn" href="#">Clients</a>
   <a *ngIf="someoneLoggedIn" href="#">Contact</a>
 </div>

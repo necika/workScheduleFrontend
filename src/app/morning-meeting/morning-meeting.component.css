@@ -1,0 +1,14 @@
+#container {
+    margin-top:7%;
+}
+form-group {
+    padding-top:50px;
+}
+.requiredText {
+    color:red;
+}
+button {
+    width : 200px;
+    height: 80px;
+    font-size: 20px;
+}
