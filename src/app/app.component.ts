@@ -27,4 +27,17 @@ export class AppComponent {
       return true;
     }
   }
+  get superAdminLoggedIn(){
+    let user = localStorage.getItem('user')
+    if (user === null){
+      return false;
+    }
+    else {
+      let userJson = JSON.parse(user);
+      if(userJson.userType === "SUPERADMIN"){
+        return true;
+      }
+      return false;
+    }
+  }
 }
