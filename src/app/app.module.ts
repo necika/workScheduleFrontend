@@ -13,6 +13,10 @@ import { TimesheetService } from './timesheet/timesheet.service';
 import { UsersService } from './users/users.service';
 import { MorningMeetingComponent } from './morning-meeting/morning-meeting.component';
 import { MorningMeetingService } from './morning-meeting/morning-meeting.service';
+import { AddCompanyComponent } from './add-company/add-company.component';
+import { AddCompanyService } from './add-company/add-company.service';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileService } from './profile/profile.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { MorningMeetingService } from './morning-meeting/morning-meeting.service
     LoginComponent,
     TimesheetComponent,
     MorningMeetingComponent,
+    AddCompanyComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +38,8 @@ import { MorningMeetingService } from './morning-meeting/morning-meeting.service
     TimesheetService,
     UsersService,
     MorningMeetingService,
+    AddCompanyService,
+    ProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

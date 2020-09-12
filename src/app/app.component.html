@@ -311,8 +311,8 @@
   <a *ngIf="someoneLoggedIn" [routerLink]="['/timesheet']">Timesheets</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/users/add']">Add Users</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/morningMeeting']">Morning meeting</a>
-  <a *ngIf="someoneLoggedIn" href="#">Clients</a>
-  <a *ngIf="someoneLoggedIn" href="#">Contact</a>
+  <a *ngIf="superAdminLoggedIn" [routerLink]="['/company/add']">Company</a>
+  <a *ngIf="someoneLoggedIn && !superAdminLoggedIn" [routerLink]="['/profile']">Profile</a>
 </div>
 
 
