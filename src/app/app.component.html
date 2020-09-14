@@ -312,7 +312,11 @@
   <a *ngIf="someoneLoggedIn" [routerLink]="['/users/add']">Add Users</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/morningMeeting']">Morning meeting</a>
   <a *ngIf="superAdminLoggedIn" [routerLink]="['/company/add']">Company</a>
+  <a *ngIf="adminLoggedIn" [routerLink]="['/projects']">Projects</a>
+  <a *ngIf="adminLoggedIn" [routerLink]="['/projects/add']">Add Project</a>
   <a *ngIf="someoneLoggedIn && !superAdminLoggedIn" [routerLink]="['/profile']">Profile</a>
+  <a *ngIf="teamLeaderLoggedIn" [routerLink]="['/usersInProject']">Users in projects</a>
+  <a *ngIf="simpleUserLoggedIn" [routerLink]="['/tasks']">Tasks</a>
 </div>
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserProfileDTO } from '../models/userProfileDTO';
 import { ProfileService } from './profile.service';
 
@@ -10,19 +11,32 @@ import { ProfileService } from './profile.service';
 export class ProfileComponent implements OnInit {
   currentUser: UserProfileDTO;
 
-  constructor(private service: ProfileService) {
+  constructor(private service: ProfileService,private route: ActivatedRoute) {
     this.currentUser = new UserProfileDTO();
    }
 
   ngOnInit(): void {
-    this.service.getLoggedUser().subscribe(response => {
-      this.currentUser.id = response.id;
-      this.currentUser.age = response.age;
-      this.currentUser.email = response.email;
-      this.currentUser.firstName = response.firstName;
-      this.currentUser.lastName = response.lastName;
-      this.currentUser.jobTitle = response.jobTitle;
-    });
+    const queryParamsId: string = this.route.snapshot.queryParamMap.get('id');
+
+    if(queryParamsId == null || queryParamsId == undefined){
+      this.service.getLoggedUser().subscribe(response => {
+        this.currentUser.id = response.id;
+        this.currentUser.age = response.age;
+        this.currentUser.email = response.email;
+        this.currentUser.firstName = response.firstName;
+        this.currentUser.lastName = response.lastName;
+        this.currentUser.jobTitle = response.jobTitle;
+      });
+    }else {
+        this.service.getUserProfile(parseInt(queryParamsId)).subscribe(response => {
+          this.currentUser.id = response.id;
+          this.currentUser.age = response.age;
+          this.currentUser.email = response.email;
+          this.currentUser.firstName = response.firstName;
+          this.currentUser.lastName = response.lastName;
+          this.currentUser.jobTitle = response.jobTitle;
+        })
+    }
   }
 
 }

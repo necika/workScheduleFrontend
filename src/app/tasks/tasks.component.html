@@ -1,0 +1,30 @@
+<div id="container">
+    <h2>Your tasks</h2>
+    <table id="tasksTable" class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th class="col1" scope="col">Name</th>
+          <th class="col2" scope="col">Description</th>
+          <th class="col3" scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks; let i=index">
+            <td>
+                <label>{{task.name}}</label>
+            </td>
+            <td>
+                <label>{{task.description}}</label>
+            </td>
+            <td>
+                <label>{{task.status}}</label>
+            </td>
+            <td>
+                <button (click)="changeToActive(task,i)" *ngIf="task.status == 'NEW'" class="btn btn-warning">Change to active</button>
+                <button (click)="changeToClosed(task,i)" *ngIf="task.status == 'ACTIVE'" class="btn btn-info">Change to closed</button>
+            </td>
+        </tr>    
+      </tbody>
+    </table>
+  </div>

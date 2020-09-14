@@ -40,4 +40,43 @@ export class AppComponent {
       return false;
     }
   }
+  get adminLoggedIn(){
+    let user = localStorage.getItem('user')
+    if (user === null){
+      return false;
+    }
+    else {
+      let userJson = JSON.parse(user);
+      if(userJson.userType === "ADMIN"){
+        return true;
+      }
+      return false;
+    }
+  }
+  get teamLeaderLoggedIn(){
+    let user = localStorage.getItem('user')
+    if (user === null){
+      return false;
+    }
+    else {
+      let userJson = JSON.parse(user);
+      if(userJson.userType === "LEADER"){
+        return true;
+      }
+      return false;
+    }
+  }
+  get simpleUserLoggedIn(){
+    let user = localStorage.getItem('user')
+    if (user === null){
+      return false;
+    }
+    else {
+      let userJson = JSON.parse(user);
+      if(userJson.userType === "EMPLOYER"){
+        return true;
+      }
+      return false;
+    }
+  }
 }

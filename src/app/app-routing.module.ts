@@ -6,6 +6,10 @@ import { AddUsersComponent } from './users/addUsers/addUsers.component';
 import { MorningMeetingComponent } from './morning-meeting/morning-meeting.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProjectComponent } from './project/project.component';
+import { AddProjectComponent } from './add-project/add-project.component';
+import { UsersInProjectComponent } from './users-in-project/users-in-project.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 
 const routes: Routes = [
@@ -14,7 +18,11 @@ const routes: Routes = [
   { path: 'users/add', component: AddUsersComponent },
   { path: 'morningMeeting', component: MorningMeetingComponent },
   { path: 'company/add', component: AddCompanyComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'projects', component: ProjectComponent },
+  { path: 'projects/add', component: AddProjectComponent },
+  { path: 'usersInProject', component: UsersInProjectComponent },
+  { path: 'tasks', component: TasksComponent }
 ];
 
 @NgModule({
