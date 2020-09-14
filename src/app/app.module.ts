@@ -17,6 +17,14 @@ import { AddCompanyComponent } from './add-company/add-company.component';
 import { AddCompanyService } from './add-company/add-company.service';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from './profile/profile.service';
+import { ProjectComponent } from './project/project.component';
+import { ProjectService } from './project/project.service';
+import { AddProjectComponent } from './add-project/add-project.component';
+import { AddProjectService } from './add-project/add-project.service';
+import { UsersInProjectComponent } from './users-in-project/users-in-project.component';
+import { UsersInProjectService } from './users-in-project/users-in-project.service';
+import { TasksComponent } from './tasks/tasks.component';
+import { TaskService } from './tasks/tasks.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +34,10 @@ import { ProfileService } from './profile/profile.service';
     MorningMeetingComponent,
     AddCompanyComponent,
     ProfileComponent,
+    ProjectComponent,
+    AddProjectComponent,
+    UsersInProjectComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +52,10 @@ import { ProfileService } from './profile/profile.service';
     MorningMeetingService,
     AddCompanyService,
     ProfileService,
+    ProjectService,
+    AddProjectService,
+    UsersInProjectService,
+    TaskService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

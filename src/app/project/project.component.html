@@ -1,0 +1,28 @@
+<div id="container">
+    <h2>Company projects</h2>
+    <table id="companyTable" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th class="col3" scope="col">Name</th>
+            <th class="col3" scope="col">Description</th>
+            <th class="col3" scope="col">Users</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of projects; let i=index">
+              <td>
+                  <label>{{project.name}}</label>
+              </td>
+              <td>
+                <label>{{project.description}}</label>
+            </td>
+            <td>
+               <div *ngFor="let user of project.users; let i=index">
+                   <p>{{user.firstName}} {{user.lastName}}</p>
+               </div>
+            </td>
+            </tr>
+           
+          </tbody>
+      </table>
+</div>
