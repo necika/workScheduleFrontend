@@ -2,12 +2,18 @@ body{
     color: #6F8BA4;
     margin-top:20px;
 }
+#about {
+  margin-top:5%;
+}
 .section {
     padding: 100px 0;
     position: relative;
 }
 .gray-bg {
-    background-color: #f5f5f5;
+    background-color: white;
+}
+#frontToolbar{
+  background-color: hsl(0, 79%, 23%);
 }
 img {
     max-width: 100%;

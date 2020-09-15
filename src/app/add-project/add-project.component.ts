@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 import { AddProjectDTO } from '../models/addProjectDTO';
 import { UserProfileDTO } from '../models/userProfileDTO';
 import { AddProjectService } from './add-project.service';
@@ -17,7 +19,10 @@ export class AddProjectComponent implements OnInit {
   teamleader:number;
   users: Array<number>;
 
-  constructor(private service: AddProjectService) { 
+  constructor(private service: AddProjectService,private router:Router) { 
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
     this.teamleader = -1;
     this.allUsers = new Array<UserProfileDTO>();
     this.allTeamLeaders = new Array<UserProfileDTO>();
@@ -38,7 +43,10 @@ export class AddProjectComponent implements OnInit {
         addProjectDTO.name = this.name;
         addProjectDTO.users = this.users;
         addProjectDTO.teamLeader = this.teamleader;
-        this.service.addProject(addProjectDTO).subscribe();
+        this.service.addProject(addProjectDTO).subscribe(response => {
+          alert("Succesfully added project");
+          this.router.navigate(['/projects'])
+        });
     }
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 import { UserProfileDTO } from '../models/userProfileDTO';
 import { ProfileService } from './profile.service';
 
@@ -11,7 +12,10 @@ import { ProfileService } from './profile.service';
 export class ProfileComponent implements OnInit {
   currentUser: UserProfileDTO;
 
-  constructor(private service: ProfileService,private route: ActivatedRoute) {
+  constructor(private service: ProfileService,private route: ActivatedRoute,private router: Router) {
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
     this.currentUser = new UserProfileDTO();
    }
 
@@ -38,5 +42,4 @@ export class ProfileComponent implements OnInit {
         })
     }
   }
-
 }

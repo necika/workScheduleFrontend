@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ export class AppComponent {
   title = 'WorkScheduleFrontend';
   showSideMenuValue : boolean;
 
-  constructor(){
+  constructor(private router: Router){
     this.showSideMenuValue = false;
   }
   
@@ -19,8 +20,16 @@ export class AppComponent {
   public closeSideMenuBar() {
     this.showSideMenuValue = false;
   }
+  public logoutUser(){
+      localStorage.clear();
+      this.router.navigate(['']);
+  }
+  public goToProfile(){
+    this.router.navigate(['/profile']);
+  }
+
   get someoneLoggedIn(){
-    if (localStorage.getItem('jwt') === null){
+    if (localStorage.getItem('jwt') === null || localStorage.getItem('user') === null){
       return false;
     }
     else {
@@ -79,4 +88,10 @@ export class AppComponent {
       return false;
     }
   }
+}
+export function isSomeoneLoggedInRedirectToLogin(){
+  if (localStorage.getItem('jwt') === null || localStorage.getItem('user') === null){
+    return false;
+  }
+  return true;
 }

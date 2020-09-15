@@ -301,20 +301,22 @@
 </style>
 
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div class="toolbar" id="frontToolbar" role="banner">
   <span style="font-size:30px;cursor:pointer; margin-left: 30px;" (click)="openSideMenuBar()">&#9776; open</span>
-  
-   
+  <span *ngIf="someoneLoggedIn" (click)="goToProfile()" title="See your profile" style="margin-left:80%;font-size:20px;" class="glyphicon glyphicon-user"></span>
+  <div *ngIf="someoneLoggedIn" (click)="logoutUser()" style="margin-left:0%;">
+    <span style="margin-left: 20px;font-size:20px;" class="glyphicon glyphicon-log-out"></span>
+    <span style="margin-left:10px;">Log out</span>
+  </div>
 </div>
 <div id="mySidenav" *ngIf="showSideMenuValue" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" (click)="closeSideMenuBar()">&times;</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/timesheet']">Timesheets</a>
-  <a *ngIf="someoneLoggedIn" [routerLink]="['/users/add']">Add Users</a>
+  <a *ngIf="adminLoggedIn" [routerLink]="['/users/add']">Add Users</a>
   <a *ngIf="someoneLoggedIn" [routerLink]="['/morningMeeting']">Morning meeting</a>
   <a *ngIf="superAdminLoggedIn" [routerLink]="['/company/add']">Company</a>
   <a *ngIf="adminLoggedIn" [routerLink]="['/projects']">Projects</a>
   <a *ngIf="adminLoggedIn" [routerLink]="['/projects/add']">Add Project</a>
-  <a *ngIf="someoneLoggedIn && !superAdminLoggedIn" [routerLink]="['/profile']">Profile</a>
   <a *ngIf="teamLeaderLoggedIn" [routerLink]="['/usersInProject']">Users in projects</a>
   <a *ngIf="simpleUserLoggedIn" [routerLink]="['/tasks']">Tasks</a>
 </div>
