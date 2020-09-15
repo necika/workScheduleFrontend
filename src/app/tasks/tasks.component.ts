@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 import { TaskDTO } from '../models/taskDTO';
 import { TaskService } from './tasks.service';
 
@@ -10,7 +12,10 @@ import { TaskService } from './tasks.service';
 export class TasksComponent implements OnInit {
   tasks: Array<TaskDTO>;
 
-  constructor(private service: TaskService) {
+  constructor(private service: TaskService,private router: Router) {
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
     this.tasks = new Array<TaskDTO>();
   }
 

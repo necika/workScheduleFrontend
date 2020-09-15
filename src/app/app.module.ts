@@ -25,6 +25,7 @@ import { UsersInProjectComponent } from './users-in-project/users-in-project.com
 import { UsersInProjectService } from './users-in-project/users-in-project.service';
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskService } from './tasks/tasks.service';
+import { AddUsersComponent } from './users/addUsers/addUsers.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { TaskService } from './tasks/tasks.service';
     AddProjectComponent,
     UsersInProjectComponent,
     TasksComponent,
+    AddUsersComponent,
   ],
   imports: [
     BrowserModule,

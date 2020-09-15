@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 import { AddCompanyDTO } from '../models/addCompanyDTO';
 import { AddCompanyService } from './add-company.service';
 
@@ -16,7 +18,11 @@ export class AddCompanyComponent implements OnInit {
   lastName: string;
   age: number;
 
-  constructor(private service: AddCompanyService) { }
+  constructor(private service: AddCompanyService,private router:Router) { 
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -28,7 +34,10 @@ export class AddCompanyComponent implements OnInit {
       alert("Fill mandatory fields !");
     }else {
       let addCompanyDTO = new AddCompanyDTO(this.companyName,this.companyDescription,this.username,this.password,this.firstName,this.lastName,this.age);
-    this.service.addCompany(addCompanyDTO).subscribe(response => alert("Succesfully added new company.."));
+    this.service.addCompany(addCompanyDTO).subscribe(response => {
+      alert("Succesfully added new company..");
+      window.location.reload()
+    });
     }
   }
 }

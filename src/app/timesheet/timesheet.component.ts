@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TimesheetService } from './timesheet.service';
 import { TimesheetEntryDTO } from '../models/timesheetEntryDTO';
+import { Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 
 //TREBA DA SE SNIMA KAKO UTC VREMEA A DA SE UCITAVA KAO LOCAL TIME
 // sta se desi ako je decembar zbog ovog + 1, ima dole komentar gde treba pogledati
@@ -18,7 +20,10 @@ export class TimesheetComponent implements OnInit {
   monthId: number;
   userId: number;
 
-  constructor(private timesheetService: TimesheetService) {
+  constructor(private timesheetService: TimesheetService,private router: Router) {
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
     this.timesheetEntries = new Array<TimesheetEntryDTO>();
   }
 

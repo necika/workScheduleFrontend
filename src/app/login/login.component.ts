@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
   logemail : string;
   logpassword : string
 
-  constructor(private service: LoginService,private router: Router, private route: ActivatedRoute) { }
+  constructor(private service: LoginService,private router: Router, private route: ActivatedRoute) { 
+    if(isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['/profile']);
+    }
+  }
 
   ngOnInit(): void {
 
@@ -26,7 +31,8 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('jwt', response.token);
           localStorage.setItem('user', JSON.stringify(response.user));
           const user = JSON.parse(localStorage.getItem('user'));
-          alert("Ulogovo se "+user.userType);
+          alert("Succesfully login: "+user.firstName + " " + user.lastName);
+          this.router.navigate(['/profile']);
         },
         err => {
           if (err.status === 400) {

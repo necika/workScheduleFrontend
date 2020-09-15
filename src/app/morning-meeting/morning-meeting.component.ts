@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 import { MorningMeetingDTO } from '../models/morningMeetingDTO';
 import { MorningMeetingService } from './morning-meeting.service';
 
@@ -11,7 +13,10 @@ export class MorningMeetingComponent implements OnInit {
   morningMeeting: MorningMeetingDTO;
   currentDate: string;
 
-  constructor(private morningMeetingService: MorningMeetingService) { 
+  constructor(private morningMeetingService: MorningMeetingService,private router: Router) { 
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
     this.morningMeeting = new MorningMeetingDTO();
   }
 

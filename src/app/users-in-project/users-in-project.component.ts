@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { isSomeoneLoggedInRedirectToLogin } from '../app.component';
 import { ChangingUserDataDTO } from '../models/changingUserDataDTO';
 import { ProjectDTO } from '../models/projectDTO';
 import { TaskDTO } from '../models/taskDTO';
@@ -24,6 +25,9 @@ export class UsersInProjectComponent implements OnInit {
   taskDescription: string;
 
   constructor(private service: UsersInProjectService,private projectService: ProjectService,private router: Router) { 
+    if(!isSomeoneLoggedInRedirectToLogin()){
+      this.router.navigate(['']);
+    }
     this.usersInTeam = new Array<UserProfileDTO>();
     this.displayUserDataFlag = false;
     this.userData = new UserProfileDTO();

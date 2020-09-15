@@ -1,11 +1,11 @@
-export class UserProfileDTO {
-  id:number;
+export class AddUsersDTO {
   age: number
   firstName: string;
   lastName: string;
   email: string;
   jobTitle: string;
   projectId: number;
+  password: string;
 
   constructor(){}
 }

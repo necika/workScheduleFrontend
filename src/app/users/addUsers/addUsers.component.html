@@ -1,25 +1,23 @@
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-  
-      <!-- Logo -->
-      <div class="fadeIn first">
-        <h1>Add User</h1>
-      </div>
-  
-      <!-- Login Form -->
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Firstname">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Lastname">
-        <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email">
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
-       
+<div id="container">
+  <!-- Default form login -->
+      <form (ngSubmit)="onSubmit()" class="text-center border border-light p-5" action="#!">
+          <h2 class="h4 mb-4">Add user</h2>
+          <input type="text" [(ngModel)]="username" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter username *"/><br>
+          <input type="text" [(ngModel)]="firstName" [ngModelOptions]="{standalone:true}"  class="form-control mb-4" required placeholder="Enter first name *"/><br>
+          <input type="text" [(ngModel)]="lastName" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter last name *"/><br>
+          <input type="number" min="1" [(ngModel)]="age" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter age *"/><br>
+          <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter password *"/><br>
+          <label >Choose user' new project</label>
+          <select [(ngModel)]="choosenProject" [ngModelOptions]="{standalone: true}" class="form-control select projectSelect">
+                <option *ngFor="let project of projects; let i=index" value={{project.id}}>{{project.name}}</option>
+          </select><br>
+          <label>Choose user's title</label><br>
+          <select [(ngModel)]="choosenTitle" [ngModelOptions]="{standalone: true}" id="titleSelectId" class="form-control select titleSelect">
+                <option selected>JUNIOR</option>
+                <option>MEDIOR</option>
+                <option>SENIOR</option>
+          </select><br>
+          <input id="submitButton" class="btn btn-info btn-block my-4" type="submit" value="Add"/>
       </form>
+  </div>
   
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <input type="submit" class="fadeIn fourth" value="Add">
-      </div>
-  
-    </div>
-</div>

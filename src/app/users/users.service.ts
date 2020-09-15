@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import { AddUsersDTO } from '../models/addUsersDTO';
 
 @Injectable()
 export class UsersService {
@@ -9,13 +10,13 @@ export class UsersService {
   private readonly editUserUrl: string;
 
   constructor(private http: HttpClient) {
-    this.addUserUrl = 'http://localhost:8080/users/add';
+    this.addUserUrl = 'http://localhost:8080/users';
     this.removeUserUrl = 'http://localhost:8080/users/delete';
     this.editUserUrl = 'http://localhost:8080/users/edit';
   }
 
-  public addUser(username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.addUserUrl, {username, password});
+  public addUser(user: AddUsersDTO): Observable<any> {
+    return this.http.post<any>(this.addUserUrl, user);
   }
   public removeUser(id: number){
      return this.http.delete<any>(this.removeUserUrl + '/' + id, null);
