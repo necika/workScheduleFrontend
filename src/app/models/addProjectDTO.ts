@@ -3,4 +3,6 @@ export class AddProjectDTO{
     description: string;
     users: Array<number>;
     teamLeader: number;
+    startDate:string;
+    endDate:string;
 }

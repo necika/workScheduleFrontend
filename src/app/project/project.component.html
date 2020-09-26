@@ -1,11 +1,29 @@
 <div id="container">
+  <h3 *ngIf="adminLoggedIn">Add user to project</h3>
+  <div *ngIf="adminLoggedIn" style="width:50%;height: 100px;">
+    <div style="width:45%;height: 100px;float: left;">
+      <label for="">Choose user</label>
+      <select [(ngModel)]="userId" [ngModelOptions]="{standalone: true}" required class="form-control" id="sel2">
+        <option *ngFor="let user of users; let i=index" value={{user.id}}>{{user.firstName}} {{user.lastName}}</option>
+      </select>
+    </div>
+    <div style="width:45%;height: 100px;float: right;">
+      <label for="">Choose project</label>
+      <select [(ngModel)]="projectId" [ngModelOptions]="{standalone: true}" required class="form-control" id="sel2">
+        <option *ngFor="let user of projects; let i=index" value={{user.id}}>{{user.name}}</option>
+      </select>
+    </div>
+  </div>
+  <button *ngIf="adminLoggedIn" (click)="addNewUserProject()" class="btn btn-info">Save</button><br><br>
     <h2>Company projects</h2>
     <table id="companyTable" class="table">
         <thead class="thead-dark">
           <tr>
             <th class="col3" scope="col">Name</th>
             <th class="col3" scope="col">Description</th>
-            <th class="col3" scope="col">Users</th>
+            <th class="col3" scope="col">Start date</th>
+            <th class="col3" scope="col">End date</th>
+            <th *ngIf="adminLoggedIn" class="col3" scope="col">Users</th>
           </tr>
         </thead>
         <tbody>
@@ -17,12 +35,31 @@
                 <label>{{project.description}}</label>
             </td>
             <td>
+              <label>{{project.startDate}}</label>
+            </td>
+            <td>
+              <label>{{project.endDate}}</label>
+            </td>
+            <td *ngIf="adminLoggedIn">
                <div *ngFor="let user of project.users; let i=index">
-                   <p>{{user.firstName}} {{user.lastName}}</p>
+                 <td>
+                  <span>{{user.firstName}} {{user.lastName}}</span>
+                 </td>
+                 <td *ngIf="adminLoggedIn">
+                    <button (click)="deleteUserFromProject(user.id,project.id)" class="btn btn-danger deleteBtn">Delete from project</button>
+                 </td>
+                 <td *ngIf="adminLoggedIn">
+                    <button (click)="displayChangingUserDataPage(user.id)" class="btn btn-warning deleteBtn">Change user data</button>
+                 </td>
+                 <td *ngIf="adminLoggedIn">
+                  <button (click)="displayUserProfiel(user.id)" class="btn btn-success deleteBtn">See user data</button>
+               </td>
                </div>
             </td>
+            <td *ngIf="teamLeaderLoggedIn">
+              <button (click)="getUsersInProject(project.id)" class="btn btn-success">See users on this project</button>
+            </td>
             </tr>
-           
           </tbody>
       </table>
 </div>

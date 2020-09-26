@@ -1,0 +1,9 @@
+#container {
+    width:30%;
+    margin-top:10%;
+    margin-left:auto;
+    margin-right :auto;
+  }
+  #submitButton{
+    background-color: hsl(0, 79%, 23%);
+  }

@@ -17,6 +17,11 @@
                 <option>MEDIOR</option>
                 <option>SENIOR</option>
           </select><br>
+          <label>Choose user's type</label><br>
+          <select [(ngModel)]="choosenUserType" [ngModelOptions]="{standalone: true}" id="titleSelectId" class="form-control select titleSelect">
+            <option selected>EMPLOYER</option>
+            <option>LEADER</option>
+          </select><br>
           <input id="submitButton" class="btn btn-info btn-block my-4" type="submit" value="Add"/>
       </form>
   </div>

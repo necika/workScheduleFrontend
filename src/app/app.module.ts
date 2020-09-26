@@ -26,6 +26,8 @@ import { UsersInProjectService } from './users-in-project/users-in-project.servi
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskService } from './tasks/tasks.service';
 import { AddUsersComponent } from './users/addUsers/addUsers.component';
+import { ChangeUserDataComponent } from './change-user-data/change-user-data.component';
+import { ChangeUserDataService } from './change-user-data/change-user-data.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { AddUsersComponent } from './users/addUsers/addUsers.component';
     UsersInProjectComponent,
     TasksComponent,
     AddUsersComponent,
+    ChangeUserDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { AddUsersComponent } from './users/addUsers/addUsers.component';
     AddProjectService,
     UsersInProjectService,
     TaskService,
+    ChangeUserDataService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

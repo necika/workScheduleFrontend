@@ -6,6 +6,7 @@ export class AddUsersDTO {
   jobTitle: string;
   projectId: number;
   password: string;
+  userType:string;
 
   constructor(){}
 }

@@ -1,16 +1,41 @@
 <div id="container">
     <h2>Enter data for morning meeting</h2><br><br>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">What were you working on yesterday? (<span class="requiredText">Required*</span>)</label>
-        <textarea [(ngModel)]="this.morningMeeting.yesterday" class="form-control" rows="4">{{this.morningMeeting.yesterday}}</textarea>
+        <div class="leftPanel panel">
+            <label for="exampleFormControlTextarea1">What were you working on yesterday? (<span class="requiredText">Required*</span>)</label>
+            <textarea [(ngModel)]="this.morningMeeting.yesterday" class="form-control" rows="4">{{this.morningMeeting.yesterday}}</textarea>
+            
+        </div>
+        <div class="rightPanel panel">
+            <label>Choose a tasks</label>
+            <select [(ngModel)]="this.morningMeeting.yesterdayTasks" [ngModelOptions]="{standalone: true}" class="form-control" multiple>
+                <option *ngFor="let task of tasks; let i=index" value={{task.id}}>{{task.name}}</option>
+            </select>
+        </div>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">What are you working on today? (<span class="requiredText">Required*</span>)</label>
-        <textarea [(ngModel)]="this.morningMeeting.today" class="form-control" rows="4">{{this.morningMeeting.today}}</textarea>
+        <div class="leftPanel panel">
+            <label for="exampleFormControlTextarea1">What are you working on today? (<span class="requiredText">Required*</span>)</label>
+            <textarea [(ngModel)]="this.morningMeeting.today" class="form-control" rows="4">{{this.morningMeeting.today}}</textarea>
+        </div>
+        <div class="rightPanel panel">
+            <label>Choose a tasks</label>
+            <select [(ngModel)]="this.morningMeeting.todayTasks"  [ngModelOptions]="{standalone: true}" class="form-control" multiple>
+                <option *ngFor="let task of tasks; let i=index" value={{task.id}}>{{task.name}}</option>
+            </select>
+        </div>
     </div>
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">Have any problems working on yesterday's tasks?</label>
-        <textarea [(ngModel)]="this.morningMeeting.problems" class="form-control" rows="4">{{this.morningMeeting.problems}}</textarea>
+        <div class="leftPanel panel">
+            <label for="exampleFormControlTextarea1">Have any problems working on yesterday's tasks?</label>
+            <textarea [(ngModel)]="this.morningMeeting.problems" class="form-control" rows="4">{{this.morningMeeting.problems}}</textarea>
+        </div>
+        <div class="rightPanel panel">
+            <label>Choose a tasks</label>
+            <select [(ngModel)]="this.morningMeeting.problemTasks"  [ngModelOptions]="{standalone: true}" class="form-control" multiple>
+                <option *ngFor="let task of tasks; let i=index" value={{task.id}}>{{task.name}}</option>
+            </select>
+        </div>
     </div>
     <button type="button" (click)="sendData()" class="btn btn-primary">Send</button>
 </div>

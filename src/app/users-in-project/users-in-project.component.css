@@ -29,8 +29,11 @@
 .titleSelectDiv{
     width: 45%;
     height: 40%;
-    float: right;
 }
 #saveChangesBtn {
     margin-top:1%;
+}
+.selectedRow {
+    background-color: hsl(0, 79%, 23%);;
+    color:white;
 }

@@ -20,6 +20,7 @@ export class AddUsersComponent implements OnInit {
   password:string;
   choosenProject:string;
   choosenTitle:string;
+  choosenUserType:string;
   
   constructor(private service:UsersService,private projectService:ProjectService,private router: Router) {
     if(!isSomeoneLoggedInRedirectToLogin()){
@@ -34,7 +35,7 @@ export class AddUsersComponent implements OnInit {
 
   onSubmit(){
     if(this.username == undefined || this.firstName == undefined || this.lastName == undefined || this.age == undefined || this.password == undefined || this.choosenProject == undefined 
-    || this.lastName == "" || this.username == "" || this.firstName == "" || this.password == "" || this.choosenProject == "" || this.choosenTitle == undefined || this.choosenTitle == ""){
+    || this.lastName == "" || this.username == "" || this.firstName == "" || this.password == "" || this.choosenProject == "" || this.choosenTitle == undefined || this.choosenTitle == "" || this.choosenUserType == undefined || this.choosenUserType == ""){
       alert("Fill mandatory fields..")
     }else {
       let user = new AddUsersDTO();
@@ -45,7 +46,7 @@ export class AddUsersComponent implements OnInit {
       user.jobTitle = this.choosenTitle;
       user.projectId = parseInt(this.choosenProject);
       user.password = this.password;
-      console.log(user)
+      user.userType = this.choosenUserType;
       this.service.addUser(user).subscribe(response => this.router.navigate(['/projects']));
     }
   }

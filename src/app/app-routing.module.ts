@@ -10,6 +10,7 @@ import { ProjectComponent } from './project/project.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { UsersInProjectComponent } from './users-in-project/users-in-project.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { ChangeUserDataComponent } from './change-user-data/change-user-data.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'projects', component: ProjectComponent },
   { path: 'projects/add', component: AddProjectComponent },
   { path: 'usersInProject', component: UsersInProjectComponent },
-  { path: 'tasks', component: TasksComponent }
+  { path: 'tasks', component: TasksComponent },
+  { path: 'changeUserData', component: ChangeUserDataComponent }
 ];
 
 @NgModule({

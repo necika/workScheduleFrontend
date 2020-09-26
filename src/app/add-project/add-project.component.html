@@ -3,13 +3,15 @@
         <form (ngSubmit)="addProject()" class="text-center border border-light p-5" action="#!">
             <h2 class="h4 mb-4">Add project</h2>
             <input type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  class="form-control mb-4" required placeholder="Enter project name *"><br>
-            <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}"  class="form-control mb-4" required placeholder="Enter project description *"><br><br>
+            <input type="text" [(ngModel)]="description" [ngModelOptions]="{standalone: true}"  class="form-control mb-4" required placeholder="Enter project description *"><br>
+            <label>Start date*</label><input type="date" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}" ><br>
+            <label>End date</label><input type="date" [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}" ><br><br>
             <label for="sel2">Select project users *(hold shift to select more than one):</label>
             <select [(ngModel)]="users" [ngModelOptions]="{standalone: true}" required multiple class="form-control" id="sel2">
                 <option *ngFor="let user of allUsers; let i=index" value={{user.id}}>{{user.firstName}} {{user.lastName}}</option>
              </select>
              <label for="sel2">Select project team leader *(hold shift to select more than one):</label>
-             <select [(ngModel)]="teamleader" [ngModelOptions]="{standalone: true}" required class="form-control" id="sel2">
+            <select [(ngModel)]="teamleader" [ngModelOptions]="{standalone: true}" required class="form-control" id="sel2">
                 <option *ngFor="let user of allTeamLeaders; let i=index" value={{user.id}}>{{user.firstName}} {{user.lastName}}</option>
             </select>
             <br><input id="submitButton" class="btn btn-info btn-block my-4" type="submit" value="Add"/>

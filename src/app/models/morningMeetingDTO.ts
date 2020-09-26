@@ -4,6 +4,9 @@ export class MorningMeetingDTO {
     today: string;
     yesterday: string;
     userId : number;
+    yesterdayTasks: Array<string>;
+    todayTasks: Array<string>;
+    problemTasks: Array<string>;
 
     constructor(){}
   }

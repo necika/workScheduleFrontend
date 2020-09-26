@@ -1,12 +1,6 @@
 <div id="container">
     <div *ngIf="displayUserDataFlag" class="changingProjectAndTitleOfUserDiv">
         <h3>{{userData.firstName}} {{userData.lastName}}</h3><br>
-        <div class="projectSelectDiv">
-            <label >Choose user' new project</label>
-            <select [(ngModel)]="choosenProject" [ngModelOptions]="{standalone: true}" class="form-control select projectSelect">
-                <option *ngFor="let project of projects; let i=index" value={{project.id}}>{{project.name}}</option>
-            </select>
-        </div>
         <div class="titleSelectDiv">
             <label>Choose user's title</label><br>
             <select [(ngModel)]="choosenTitle" [ngModelOptions]="{standalone: true}" id="titleSelectId" class="form-control select titleSelect">
@@ -26,7 +20,32 @@
             <button (click)="addTask()" class="btn btn-success">Add task</button>
         </div>
     </div>
-    <h2>Users in project</h2>
+    <div *ngIf="displayUserTasksFlag">
+        <h2>Selected user tasks</h2>
+        <table id="tasksTable" class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th class="col1" scope="col">Name</th>
+            <th class="col2" scope="col">Description</th>
+            <th class="col3" scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="tableRows" *ngFor="let task of tasks; let i=index">
+                <td>
+                    <label>{{task.name}}</label>
+                </td>
+                <td>
+                    <label>{{task.description}}</label>
+                </td>
+                <td>
+                    <label>{{task.status}}</label>
+                </td>
+            </tr>    
+        </tbody>
+        </table>
+    </div>
+    <h2>Users in project : {{this.projectName}}</h2>
     <table id="companyTable" class="table">
         <thead class="thead-dark">
           <tr>
@@ -38,7 +57,7 @@
           </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let user of usersInTeam; let i=index">
+            <tr class="tableRows" *ngFor="let user of usersInTeam; let i=index">
                 <td>
                     <label>{{user.firstName}}</label>
                 </td>
@@ -53,7 +72,9 @@
                 </td>
                 <td>
                     <button (click)="getUserProfile(user.id)" class="btn btn-warning">See profile</button>
-                    <button (click)="displayUserData(user,i)" class="btn btn-info">Change user's data</button>
+                    <button (click)="displayUserData(user,i)" class="btn btn-info">Add task for user</button>
+                    <button (click)="displayTasksByUser(user.id,i)" class="btn btn-success">See user tasks</button>
+                    <button (click)="changeUserData(user.id)" class="btn btn-primary">Change user data</button>
                 </td>
             </tr>  
           </tbody>
