@@ -18,6 +18,8 @@ export class AddProjectComponent implements OnInit {
   description:string;
   teamleader:number;
   users: Array<number>;
+  startDate:string;
+  endDate: string;
 
   constructor(private service: AddProjectService,private router:Router) { 
     if(!isSomeoneLoggedInRedirectToLogin()){
@@ -33,20 +35,34 @@ export class AddProjectComponent implements OnInit {
     this.service.getAllUsers().subscribe(response => this.allUsers = response);
     this.service.getTeamLeaders().subscribe(response => this.allTeamLeaders = response);
   }
+  private getTime(value: string){
+   if(value == undefined || value == ""){
+      return -1;
+   }else {
+     let date = new Date(value)
+     return date.getTime();
+   }
+  }
   addProject() {
     if(this.users.length == 0 || this.teamleader == -1 || this.name == "" 
-      || this.name == undefined || this.description == undefined || this.description == ""){
+      || this.name == undefined || this.description == undefined || this.description == "" || this.startDate == undefined || this.startDate == ""){
         alert("Fill mandatory fields..")
     }else {
+      if(this.getTime(this.endDate) != -1 && this.getTime(this.startDate) >= this.getTime(this.endDate)){
+        alert("Start time is after end time..");
+      }else {
         let addProjectDTO = new AddProjectDTO();
         addProjectDTO.description = this.description;
         addProjectDTO.name = this.name;
         addProjectDTO.users = this.users;
         addProjectDTO.teamLeader = this.teamleader;
+        addProjectDTO.startDate = this.startDate;
+        addProjectDTO.endDate = this.endDate;
         this.service.addProject(addProjectDTO).subscribe(response => {
           alert("Succesfully added project");
           this.router.navigate(['/projects'])
         });
+      }
     }
   }
 

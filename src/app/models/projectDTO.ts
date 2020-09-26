@@ -7,6 +7,8 @@ export class ProjectDTO{
     description: string;
     users: Array<UserProfileDTO>;
     company: CompanyDTO;
+    startDate: string;
+    endDate:string;
 
     constructor(){}
 }

@@ -1,0 +1,12 @@
+<div id="container">
+    <!-- Default form login -->
+        <form (ngSubmit)="onSubmit()" class="text-center border border-light p-5" action="#!">
+            <h2 class="h4 mb-4">Add user</h2>
+            <input type="text" [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter username *"/><br>
+            <input type="text" [(ngModel)]="user.firstName" [ngModelOptions]="{standalone:true}"  class="form-control mb-4" required placeholder="Enter first name *"/><br>
+            <input type="text" [(ngModel)]="user.lastName" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter last name *"/><br>
+            <input type="number" min="1" [(ngModel)]="user.age" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter age *"/><br>
+            <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}" class="form-control mb-4" required placeholder="Enter password *"/><br>
+            <input id="submitButton" class="btn btn-info btn-block my-4" type="submit" value="Add"/>
+        </form>
+    </div>
